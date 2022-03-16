@@ -48,15 +48,12 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           RELEASE_IMAGE: ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.RELEASE_REVISION }}
         run: |
-          docker buildx:master create --use
+          docker buildx create --use
           
-          docker buildx:master build \
+          docker buildx build \
           --tag ${{ env.RELEASE_IMAGE }} \
           --push \
           .
-          
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
       - name: Deploy to Kubernetes cluster
         uses: kodermax/kubectl-aws-eks@master
