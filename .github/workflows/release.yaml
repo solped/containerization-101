@@ -81,5 +81,5 @@ env:
   AWS_REGION: ${{ secrets.AWS_REGION }}
   KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
   KUBE_NAMESPACE: production
-  ECR_REPOSITORY: my-cool-application
+  ECR_REPOSITORY: docker-class
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
