@@ -3,8 +3,9 @@
 ### Goals:
 
 - [x] Complete draft of CICD via GitHub action
-- [x] Be able to deploy simple web application to EKS
 - [ ] Setup EKS Cluster https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html#eks-configure-kubectl
+- [ ] Be able to deploy simple web application to EKS
+
 
 ### Deployment
 
