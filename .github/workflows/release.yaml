@@ -51,8 +51,8 @@ jobs:
           docker buildx create --use
           
           docker buildx build \
+          --build-context project=https://github.com/vtanathip/docker-k8s-tutorial.git .
           --tag ${{ env.RELEASE_IMAGE }} \
-          --target release \
           --push \
           .
           
