@@ -14,3 +14,9 @@ aws cloudformation create-stack \
   --stack-name my-docker-class-stack \
   --template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml
 ```
+### Configuration
+Get credentials for config data 
+
+```
+cat $HOME/.kube/config | base64
+```
