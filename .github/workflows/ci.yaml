@@ -1,4 +1,4 @@
-name: Release
+name: ci
 on:
   pull_request:
     branches: [ main ]
@@ -6,8 +6,8 @@ on:
     branches: [ main ]
 
 jobs:
-  release:
-    name: Release
+  ci:
+    name: ci
     runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Runs
