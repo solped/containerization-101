@@ -21,7 +21,16 @@ aws cloudformation create-stack \
 Get credentials for config data 
 
 ```
-aws eks update-kubeconfig --region us-east1 --name docker-cluster
-
 cat $HOME/.kube/config | base64
+```
+
+#### Steps
+- Initial networking of k8s via cloudformation template
+- Create cluster based on that network (manually or cli)
+- validate connection from your local machine with AWS via 
+
+```
+aws sts get-caller-identity
+aws eks update-kubeconfig --region us-east1 --name docker-k8s-cluster
+kubectl get svc
 ```
