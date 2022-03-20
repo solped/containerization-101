@@ -3,9 +3,9 @@
 ### Goals:
 
 - [x] Complete draft of CICD via GitHub action
-- [ ] Setup EKS Cluster https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html#eks-configure-kubectl
+- [ ] Setup EKS
+  Cluster https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html#eks-configure-kubectl
 - [ ] Be able to deploy simple web application to EKS
-
 
 ### Deployment
 
@@ -17,14 +17,17 @@ aws cloudformation create-stack \
   
   
 ```
+
 ### Configuration
-Get credentials for config data 
+
+Get credentials for config data
 
 ```
 cat $HOME/.kube/config | base64
 ```
 
 #### Steps
+
 - Initial networking of k8s via cloudformation template
 - Create cluster based on that network (manually or cli)
 - validate connection from your local machine with AWS via
@@ -32,8 +35,18 @@ cat $HOME/.kube/config | base64
 - https://docs.aws.amazon.com/eks/latest/userguide/connecting-cluster.html
 
 Prerequisite:
-    - https://docs.aws.amazon.com/eks/latest/userguide/connector_IAM_role.html
-    - https://docs.aws.amazon.com/eks/latest/userguide/troubleshooting_iam.html#security-iam-troubleshoot-cannot-view-nodes-or-workloads
+- https://docs.aws.amazon.com/eks/latest/userguide/connector_IAM_role.html
+- https://docs.aws.amazon.com/eks/latest/userguide/troubleshooting_iam.html#security-iam-troubleshoot-cannot-view-nodes-or-workloads
+- eks:AccessKubernetesApi - adding IAM users or roles to the aws-auth configmap - brew install aws-iam-authenticator
+- brew install aws-iam-authenticator
+- curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/darwin/amd64/kubectl
+- https://aws.amazon.com/premiumsupport/knowledge-center/eks-api-server-unauthorized-error/
+## Step by step:
+  - get auth token 
+    ```shell
+    aws eks get-token --cluster-name eks-lab
+    ```
+
 
 ```
 aws sts get-caller-identity
