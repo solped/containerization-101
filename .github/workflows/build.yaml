@@ -18,6 +18,7 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
 
       - name: Configure docker for GCP
+        uses: google-github-actions/auth
         run: gcloud auth configure-docker
 
       # - name: Build docker image
