@@ -1,28 +1,35 @@
-name: Docker-GCP
+name: Build and Push to GCR
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - v*
+
+# Environment variables available to all jobs and steps in this workflow
+#  GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
+#  GKE_KEY: ${{ secrets.GKE_KEY }}
+env:
+  GITHUB_SHA: ${{ github.sha }}
+  GITHUB_REF: ${{ github.ref }}
+  IMAGE: [IMAGE_NAME]
+  REGISTRY_HOSTNAME: gcr.io
+
 jobs:
-  build:
+  setup-build-publish-deploy:
+    name: Setup, Build, and Publish
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - name: Setup gcloud
-        uses: google-github-actions/auth
+      # Setup gcloud CLI
+      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
-          version: "290.0.1"
+          version: "270.0.0"
           service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
 
-      # - name: Configure docker for GCP
-      #   uses: google-github-actions/auth
-      #   run: gcloud auth configure-docker
-
-      # - name: Build docker image
-      #   run: docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/<YOUR_IMAGE_NAME>:latest .
-
-      # - name: Push to Google Container Registry
-      #   run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/<YOUR_IMAGE_NAME>:latest
+      # Configure docker to use the gcloud command-line tool as a credential helper
+      - run: |
+          # Set up docker to authenticate
+          # via gcloud command-line tool.
+          gcloud auth configure-docker
