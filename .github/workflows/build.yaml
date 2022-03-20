@@ -1,5 +1,5 @@
 name: Docker-GCP
-name: Docker-GCP
+
 on:
   push:
     branches:
@@ -13,7 +13,7 @@ jobs:
       - name: Setup gcloud
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
-          version: '290.0.1'
+          version: "290.0.1"
           service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
           project_id: ${{ secrets.GCP_PROJECT_ID }}
 
