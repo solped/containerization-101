@@ -27,10 +27,17 @@ cat $HOME/.kube/config | base64
 #### Steps
 - Initial networking of k8s via cloudformation template
 - Create cluster based on that network (manually or cli)
-- validate connection from your local machine with AWS via 
+- validate connection from your local machine with AWS via
+
+- https://docs.aws.amazon.com/eks/latest/userguide/connecting-cluster.html
+
+Prerequisite:
+    - https://docs.aws.amazon.com/eks/latest/userguide/connector_IAM_role.html
+    - https://docs.aws.amazon.com/eks/latest/userguide/troubleshooting_iam.html#security-iam-troubleshoot-cannot-view-nodes-or-workloads
 
 ```
 aws sts get-caller-identity
 aws eks update-kubeconfig --region us-east1 --name docker-k8s-cluster
+
 kubectl get svc
 ```
