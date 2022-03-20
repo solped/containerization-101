@@ -7,6 +7,12 @@
   Cluster https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html#eks-configure-kubectl
 - [ ] Be able to deploy simple web application to EKS
 
+### DB Migration
+
+- https://sequelize.org/master/manual/migrations.html
+- `npx sequelize-cli db:migrate`
+
+
 ### Deployment
 
 ```shell
@@ -35,18 +41,20 @@ cat $HOME/.kube/config | base64
 - https://docs.aws.amazon.com/eks/latest/userguide/connecting-cluster.html
 
 Prerequisite:
+
 - https://docs.aws.amazon.com/eks/latest/userguide/connector_IAM_role.html
 - https://docs.aws.amazon.com/eks/latest/userguide/troubleshooting_iam.html#security-iam-troubleshoot-cannot-view-nodes-or-workloads
 - eks:AccessKubernetesApi - adding IAM users or roles to the aws-auth configmap - brew install aws-iam-authenticator
 - brew install aws-iam-authenticator
 - curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/darwin/amd64/kubectl
 - https://aws.amazon.com/premiumsupport/knowledge-center/eks-api-server-unauthorized-error/
-## Step by step:
-  - get auth token 
-    ```shell
-    aws eks get-token --cluster-name eks-lab
-    ```
 
+## Step by step:
+
+- get auth token
+  ```shell
+  aws eks get-token --cluster-name eks-lab
+  ```
 
 ```
 aws sts get-caller-identity

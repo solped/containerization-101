@@ -2,24 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const ip = require("ip");
-const {Sequelize} = require('@sequelize/core');
+const {Sequelize, QueryTypes} = require('@sequelize/core');
+const model = require('./models');
+
 
 const app = express();
 const port = 5000;
 
 app.use(cors());
-
-const sequelize = new Sequelize('postgres', 'admin', 'admin', {
-    // gimme postgres, please!
-    host: "localhost",
-    dialect: 'postgres',
-    port: 5432
-})
-
-
-sequelize.authenticate()
-    .then(r => console.log('Connection has been established successfully.'))
-    .catch(error => console.error('Unable to connect to the database:', error));
 
 // Configuring body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
@@ -30,11 +20,20 @@ app.get('/healthcheck', (req, res) => {
 });
 
 app.post('/tasks', (req, res) => {
-    res.send("tasks have been saved successfully.")
+    model.sequelize.model('Task').create({
+        text: req.body.text,
+        isDone: req.body.isDone
+    }).then(result =>
+        res.json(`The task ${result.dataValues.id} has been created`)
+    );
 });
 
 app.get('/tasks', (req, res) => {
-    res.send("Get all tasks successfully.")
+    model.sequelize.model('Task').findAll({}).then(result => {
+        res.json(result)
+    }).catch(err => {
+        console.log(err)
+    })
 });
 
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))
