@@ -20,8 +20,8 @@ jobs:
       - name: Configure docker for GCP
         run: gcloud auth configure-docker
 
-      - name: Build docker image
-        run: docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/<YOUR_IMAGE_NAME>:latest .
+      # - name: Build docker image
+      #   run: docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/<YOUR_IMAGE_NAME>:latest .
 
-      - name: Push to Google Container Registry
-        run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/<YOUR_IMAGE_NAME>:latest
+      # - name: Push to Google Container Registry
+      #   run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/<YOUR_IMAGE_NAME>:latest
