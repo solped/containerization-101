@@ -47,16 +47,32 @@ jobs:
         location: ${{ env.GKE_ZONE }}
 
     # Build the Docker image
-    - name: Build
+    - name: Build client
       run: |-
         docker build \
-          --tag "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA" \
+          --tag "gcr.io/$PROJECT_ID/$IMAGE-client:$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
           --build-arg GITHUB_REF="$GITHUB_REF" \
+          -f ./client/Dockerfile \
+          .
+    
+    - name: Build server
+      run: |-
+        docker build \
+          --tag "gcr.io/$PROJECT_ID/$IMAGE-server:$GITHUB_SHA" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          -f ./server/Dockerfile \
           .
   
     # Push the Docker image to Google Container Registry
-    - name: Publish
+    - name: Publish client
       run: |-
-        docker push "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
+        docker push "gcr.io/$PROJECT_ID/$IMAGE-client:$GITHUB_SHA"
+
+        
+    # Push the Docker image to Google Container Registry
+    - name: Publish server
+      run: |-
+        docker push "gcr.io/$PROJECT_ID/$IMAGE-server:$GITHUB_SHA"
     
