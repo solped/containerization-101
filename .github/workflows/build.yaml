@@ -54,17 +54,13 @@ jobs:
       run: |-
         cd client
         docker build \
-          --tag "gcr.io/$PROJECT_ID/client:latest" \
-          -f ./client/Dockerfile \
-          .
+          --tag "gcr.io/$PROJECT_ID/client:latest" .
     
     - name: Build server
       run: |-
         cd server
         docker build \
-          --tag "gcr.io/$PROJECT_ID/server:latest" \
-          -f ./server/Dockerfile \
-          .
+          --tag "gcr.io/$PROJECT_ID/server:latest" .
   
     # Push the Docker image to Google Container Registry
     - name: Publish client
