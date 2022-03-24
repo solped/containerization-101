@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+  labels:
+    component: server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: server
+  template:
+    metadata:
+      name: server
+      labels:
+        component: server
+    spec:
+      containers:
+        - name: server
+          image: gcr.io/halogen-acumen-344711/server:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: HOST
+              value: postgres-cluster-ip-service
+            - name: PORT
+              value: '5432'
+            - name: DATABASE
+              value: postgres
+            - name: USER
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: postgres-password
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: postgres-password
+      imagePullSecrets:
+        - name: gcr-json-key

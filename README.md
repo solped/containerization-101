@@ -12,7 +12,6 @@
 - https://sequelize.org/master/manual/migrations.html
 - `npx sequelize-cli db:migrate`
 
-
 ### Deployment
 
 ```shell
@@ -61,4 +60,16 @@ aws sts get-caller-identity
 aws eks update-kubeconfig --region us-east1 --name docker-k8s-cluster
 
 kubectl get svc
+```
+
+### Set up K8S cluster
+
+```shell
+# Create secret object for image pulling on private registry
+# service-account: /Users/worasit.daimongkol/Downloads/halogen-acumen-344711-f697a3f90db5.json
+kubectl create secret docker-registry gcr-json-key \
+--docker-server=gcr.io \
+--docker-username=_json_key \
+--docker-password="$(cat ~/Downloads/halogen-acumen-344711-f697a3f90db5.json)" \
+--docker-email=worasit.dmk501@gmail.com
 ```
