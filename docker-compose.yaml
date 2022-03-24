@@ -8,6 +8,8 @@ services:
       - "3000:3000"
     depends_on:
       - server
+    environment:
+      NODE_ENV: "development"
   server:
     build:
       context: ./server
@@ -17,7 +19,7 @@ services:
     depends_on:
       - db
     environment:
-      NODE_ENV: "development"
+      NODE_ENV: "test"
       DB_NAME: "postgres"
       DB_USER: "admin"
       DB_PASSWORD: "admin"

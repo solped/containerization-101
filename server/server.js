@@ -15,10 +15,12 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.get('/healthcheck', (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
     res.send(`Server is available at ip: ${ip.address()}`);
 });
 
 app.get('/tasks', (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
     model.sequelize.model('Task').findAll({}).then(result => {
         res.json(result)
     }).catch(err => {
@@ -27,6 +29,7 @@ app.get('/tasks', (req, res) => {
 });
 
 app.post('/tasks', (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
     model.sequelize.model('Task').create({
         text: req.body.text,
         isDone: req.body.isDone
@@ -36,6 +39,7 @@ app.post('/tasks', (req, res) => {
 });
 
 app.put('/tasks/:id', (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
     model.sequelize.model('Task').update({isDone: req.body.isDone}, {
         where: {
             id: req.params.id,
@@ -46,6 +50,7 @@ app.put('/tasks/:id', (req, res) => {
 });
 
 app.delete('/tasks/:id', (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
     model.sequelize.model('Task').destroy({
         where: {
             id: req.params.id,

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: gcr.io/halogen-acumen-344711/client:1.0.3
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "kubernetes"
+            - name: REACT_APP_NODE_ENV
+              value: "kubernetes"
+            - name: REACT_APP_SERVER_HOST
+              value: server-cluster-ip-service
+            - name: REACT_APP_SERVER_PORT
+              value: "5000"
+      imagePullSecrets:
+        - name: gcr-json-key
+
