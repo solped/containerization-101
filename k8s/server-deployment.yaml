@@ -18,6 +18,7 @@ spec:
       containers:
         - name: server
           image: gcr.io/halogen-acumen-344711/server:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
           env:
