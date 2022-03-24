@@ -1,6 +1,5 @@
 {
   "development": {
-    "use_env_variable": true,
     "username": "admin",
     "password": "admin",
     "database": "postgres",

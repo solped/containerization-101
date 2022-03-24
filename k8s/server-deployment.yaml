@@ -21,18 +21,18 @@ spec:
           ports:
             - containerPort: 5000
           env:
-            - name: HOST
+            - name: DB_HOST
               value: postgres-cluster-ip-service
             - name: PORT
               value: '5432'
-            - name: DATABASE
+            - name: DB_NAME
               value: postgres
-            - name: USER
+            - name: DB_USER
               valueFrom:
                 secretKeyRef:
                   key: username
                   name: postgres-password
-            - name: PASSWORD
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: password

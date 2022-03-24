@@ -18,6 +18,10 @@ services:
       - db
     environment:
       NODE_ENV: test
+      DB_NAME: "postgres"
+      DB_USER: "admin"
+      DB_PASSWORD: "admin"
+      DB_HOST: "db"
   db:
     image: postgres
     restart: always
