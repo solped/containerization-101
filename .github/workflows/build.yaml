@@ -52,6 +52,7 @@ jobs:
     # Build the Docker image
     - name: Build client
       run: |-
+        cd client
         docker build \
           --tag "gcr.io/$PROJECT_ID/client:latest" \
           -f ./client/Dockerfile \
@@ -59,6 +60,7 @@ jobs:
     
     - name: Build server
       run: |-
+        cd server
         docker build \
           --tag "gcr.io/$PROJECT_ID/server:latest" \
           -f ./server/Dockerfile \
