@@ -32,7 +32,7 @@ app.post('/tasks', (req, res) => {
         text: req.body.text,
         isDone: req.body.isDone
     }).then(result =>
-        res.json(`The task ${result.dataValues.id} has been created`)
+        res.json(result.dataValues)
     );
 });
 
