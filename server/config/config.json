@@ -1,4 +1,12 @@
 {
+  "kubernetes": {
+    "username": "admin",
+    "password": "admin",
+    "database": "postgres",
+    "host": "postgres-cluster-ip-service",
+    "dialect": "postgres",
+    "port": 5432
+  },
   "development": {
     "username": "admin",
     "password": "admin",

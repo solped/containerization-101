@@ -17,7 +17,7 @@ services:
     depends_on:
       - db
     environment:
-      NODE_ENV: test
+      NODE_ENV: "development"
       DB_NAME: "postgres"
       DB_USER: "admin"
       DB_PASSWORD: "admin"

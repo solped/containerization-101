@@ -5,7 +5,6 @@ const ip = require("ip");
 const {Sequelize, QueryTypes} = require('@sequelize/core');
 const model = require('./models');
 
-
 const app = express();
 const port = 5000;
 

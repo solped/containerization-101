@@ -38,5 +38,7 @@ spec:
                 secretKeyRef:
                   key: password
                   name: postgres-password
+            - name: NODE_ENV
+              value: "kubernetes"
       imagePullSecrets:
         - name: gcr-json-key
