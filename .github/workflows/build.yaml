@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  PROJECT_ID: halogen-acumen-344711
   GKE_CLUSTER: cluster-1    # Add your cluster name here.
   GKE_ZONE: us-central1-c   # Add your cluster zone here.
   IMAGE: remora-nognped
@@ -53,29 +53,24 @@ jobs:
     - name: Build client
       run: |-
         docker build \
-          --tag "gcr.io/$PROJECT_ID/$IMAGE-client:$GITHUB_SHA" \
-          --build-arg GITHUB_SHA="$GITHUB_SHA" \
-          --build-arg GITHUB_REF="$GITHUB_REF" \
+          --tag "gcr.io/$PROJECT_ID/client:latest" \
           -f ./client/Dockerfile \
           .
     
     - name: Build server
       run: |-
         docker build \
-          --tag "gcr.io/$PROJECT_ID/$IMAGE-server:$GITHUB_SHA" \
-          --build-arg GITHUB_SHA="$GITHUB_SHA" \
-          --build-arg GITHUB_REF="$GITHUB_REF" \
+          --tag "gcr.io/$PROJECT_ID/server:latest" \
           -f ./server/Dockerfile \
           .
   
     # Push the Docker image to Google Container Registry
     - name: Publish client
       run: |-
-        docker push "gcr.io/$PROJECT_ID/$IMAGE-client:$GITHUB_SHA"
+        docker push "gcr.io/$PROJECT_ID/client:latest"
 
         
     # Push the Docker image to Google Container Registry
     - name: Publish server
       run: |-
-        docker push "gcr.io/$PROJECT_ID/$IMAGE-server:$GITHUB_SHA"
-    
+        docker push "gcr.io/$PROJECT_ID/server:latest"
