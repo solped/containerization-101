@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import "./App.css";
 import {Button, Card, Form} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from "axios";
 
 
 function Todo({todo, index, markTodo, removeTodo}) {
@@ -61,21 +62,48 @@ function App() {
             console.log(error)
         });
     }, [])
+
     const addTodo = text => {
-        const newTodos = [...todos, {text}];
-        setTodos(newTodos);
+        axios.post('http://localhost:5000/tasks', {
+            text: text,
+            isDone: false
+        })
+            .then((response) => {
+                console.log(response);
+                const newTodos = [...todos, response.data];
+                console.log(newTodos);
+                setTodos(newTodos);
+            }, (error) => {
+                console.log(error);
+            });
     };
 
-    const markTodo = index => {
+    const markTodo = id => {
         const newTodos = [...todos];
-        newTodos[index].isDone = true;
+        const updatedIndex = newTodos.findIndex(x => x.id === id);
+        newTodos[updatedIndex].isDone = true;
+        console.log(`==== markTodo - index: ${id}`)
         setTodos(newTodos);
+        axios.put(`http://localhost:5000/tasks/${id}`, {
+            isDone: true
+        })
+            .then((response) => {
+                console.log(response);
+            }, (error) => {
+                console.log(error);
+            });
     };
 
-    const removeTodo = index => {
+    const removeTodo = id => {
         const newTodos = [...todos];
-        newTodos.splice(index, 1);
-        setTodos(newTodos);
+        const updatedTodos = newTodos.filter(x => x.id !== id);
+        setTodos(updatedTodos);
+        axios.delete(`http://localhost:5000/tasks/${id}`)
+            .then((response) => {
+                console.log(response);
+            }, (error) => {
+                console.log(error);
+            });
     };
 
     return (
@@ -84,12 +112,12 @@ function App() {
                 <h1 className="text-center mb-4">Todo List</h1>
                 <FormTodo addTodo={addTodo}/>
                 <div>
-                    {todos.map((todo, index) => (
+                    {todos.map((todo) => (
                         <Card>
                             <Card.Body>
                                 <Todo
-                                    key={index}
-                                    index={index}
+                                    key={todo.id}
+                                    index={todo.id}
                                     todo={todo}
                                     markTodo={markTodo}
                                     removeTodo={removeTodo}
