@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: gcr.io/halogen-acumen-344711/client:1.0.3
+          image: gcr.io/halogen-acumen-344711/client:1.0.5
           ports:
             - containerPort: 3000
           env:

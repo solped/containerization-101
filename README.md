@@ -72,4 +72,10 @@ kubectl create secret docker-registry gcr-json-key \
 --docker-username=_json_key \
 --docker-password="$(cat ~/Downloads/halogen-acumen-344711-f697a3f90db5.json)" \
 --docker-email=worasit.dmk501@gmail.com
+
+
+# Scale the replicas
+kubectl scale --current-replicas=3 --replicas=5 deployment.apps/client-deployment
 ```
+
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
