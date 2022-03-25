@@ -5,6 +5,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import ip from "ip"
 
+const env = process.env.NODE_ENV || 'kubernetes';
+let SERVER_URL = `${process.env.REACT_APP_SERVER_HOST}:${process.env.REACT_APP_SERVER_PORT}`
+console.log(`${process.env.REACT_APP_SERVER_HOST}:${process.env.REACT_APP_SERVER_PORT}`)
+if (env === 'development') {
+    SERVER_URL = "http://localhost:5000"
+}
+
+console.log("--------- SERVER_URL ---------------")
+console.log(SERVER_URL);
+console.log("--------- NODE_ENV ---------------")
+console.log(env);
 
 function Todo({todo, index, markTodo, removeTodo}) {
     return (
@@ -51,7 +62,7 @@ function App() {
     const [todos, setTodos] = React.useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/tasks")
+        fetch(`${SERVER_URL}/tasks`)
             .then(response => {
                 if (response.ok) {
                     return response.json()
@@ -65,7 +76,7 @@ function App() {
     }, [])
 
     const addTodo = text => {
-        axios.post('http://localhost:5000/tasks', {
+        axios.post(`${SERVER_URL}/tasks`, {
             text: text,
             isDone: false
         })
@@ -85,7 +96,7 @@ function App() {
         newTodos[updatedIndex].isDone = true;
         console.log(`==== markTodo - index: ${id}`)
         setTodos(newTodos);
-        axios.put(`http://localhost:5000/tasks/${id}`, {
+        axios.put(`${SERVER_URL}/tasks/${id}`, {
             isDone: true
         })
             .then((response) => {
@@ -99,7 +110,7 @@ function App() {
         const newTodos = [...todos];
         const updatedTodos = newTodos.filter(x => x.id !== id);
         setTodos(updatedTodos);
-        axios.delete(`http://localhost:5000/tasks/${id}`)
+        axios.delete(`${SERVER_URL}/tasks/${id}`)
             .then((response) => {
                 console.log(response);
             }, (error) => {
