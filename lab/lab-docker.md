@@ -8,13 +8,13 @@
 - Build server image from `server` folder
 ```shell 
     cd server
-    docker build -t server .
+    docker build -t server:1.0.5 .
     docker images
 ```
 - Build client image from `client` folder
 ```shell
     cd client
-    docker build -t client .
+    docker build -t client:1.0.5 .
 ```
 - Use Docker compose to start application stack
 ```shell

@@ -17,3 +17,7 @@
 ```shell
     kubectl delete -f k8s
 ```
+- Show kuberbetes object
+```shell
+    kubectl get all
+```
