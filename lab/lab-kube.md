@@ -1,26 +1,33 @@
 # Lab Kubernetes
 
 ## Prerequsite
+
 - [Docker desktop](https://www.docker.com/products/docker-desktop/)
 - Switch Kubernetes context to local custer
-```shell
-    kubectl config get-contexts
-    kubectl config use-context docker-desktop
-```
+  ```shell
+      kubectl config get-contexts
+      kubectl config use-context docker-desktop
+  ```
+- Build docker images via docker-compose
+  ```shell
+  docker-compose --project-name "lab" build
+  ```
 
 ## Steps
-- Deploy kubernetes objects to cluster
+
+## Useful Commands
+
 ```shell
-    kubectl apply -f k8s
-```
-- Deleeting resources
-```shell
-    kubectl delete -f k8s
-```
-- Show kuberbetes object
-```shell
-    kubectl get all
+# get resources
+kubectl get all -o wide
+
+# Execute into pod
+kubectl exec -it pod/client-deployment-687cf56d5f-lh87v -- ash
+
+# Scale Pods
+kubectl scale --current-replicas=3 --replicas=5 deployment.apps/client-deployment
 ```
 
 Useful Link:
+
 - Cheatsheet: https://kubernetes.io/docs/reference/kubectl/cheatsheet/
