@@ -5,8 +5,8 @@
 - [Docker desktop](https://www.docker.com/products/docker-desktop/)
 - Switch Kubernetes context to local custer
   ```shell
-      kubectl config get-contexts
-      kubectl config use-context docker-desktop
+  kubectl config get-contexts
+  kubectl config use-context docker-desktop
   ```
 - Build docker images via docker-compose
   ```shell
