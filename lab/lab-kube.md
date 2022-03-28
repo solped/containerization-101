@@ -21,3 +21,6 @@
 ```shell
     kubectl get all
 ```
+
+Useful Link:
+- Cheatsheet: https://kubernetes.io/docs/reference/kubectl/cheatsheet/
