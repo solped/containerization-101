@@ -1,4 +1,4 @@
-# docker build -t demo:add .
+# docker build -t demo:add -f .\add.Dockerfile .
 # docker run --rm --name my-running-app -p 8080:80 demo:add
 # docker exec -it my-running-app bash 
 # cd /usr/local/apache2/htdocs/
