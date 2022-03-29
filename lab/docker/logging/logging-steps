@@ -1,0 +1,4 @@
+docker info --format="{{json .LoggingDriver}}"
+
+docker run --name some-nginx -d -p 8080:80 nginx
+docker logs -f <containerID>
