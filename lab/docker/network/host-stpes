@@ -1,2 +1,4 @@
 # Work only linux host
 docker run --rm -d --network host --name my_nginx nginx
+ip addr show
+sudo netstat -tulpn | grep :80
