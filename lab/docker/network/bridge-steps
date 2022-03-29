@@ -1,27 +1,26 @@
 docker network ls
 docker network create my-net
 
-docker run --rm --name mynginx --detach nginx
-docker inspect mynginx | grep IPAddress
-# docker inspect mynginx | jq '.[].NetworkSettings.Networks.bridge.IPAddress'
-# curl ifconfig.me check my ip
-
-docker run -it busybox sh
-wget -q -O - 172.17.0.2:80
-
 # default
-docker create --name my-nginx --publish 8080:80 nginx:latest
-
+docker create --name my-nginx --publish 8080:80 nginx:latest  
 docker start my-nginx
-docker inspect my-nginx  
-  
+docker inspect my-nginx 
 
 # User-defined
 docker create --name my-nginx-custom-network \
   --network my-net \
   --publish 8080:80 \
   nginx:latest
-
 docker start my-nginx-custom-network
 docker inspect my-nginx-custom-network  
-  
+
+# docker network connect for connect running container to network
+
+# docker run --rm --name mynginx --detach nginx
+# docker inspect mynginx | grep IPAddress
+# docker inspect mynginx | jq '.[].NetworkSettings.Networks.bridge.IPAddress'
+# curl ifconfig.me check my ip
+
+# docker run -it busybox sh
+# wget -q -O - 172.17.0.2:80
+ 
