@@ -6,6 +6,25 @@
 	},
 	"item": [
 		{
+			"name": "healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/healthcheck",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"healthcheck"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get all tasks",
 			"request": {
 				"method": "GET",
@@ -59,7 +78,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"isDone\": false\n}",
+					"raw": "{\n    \"isDone\": true\n}",
 					"options": {
 						"raw": {
 							"language": "json"
