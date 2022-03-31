@@ -54,6 +54,8 @@ kubectl get all -o wide
 kubectl delete -f lab/kubernetes/service
 ```
 
+---
+
 # Deployment
 
 ```shell
@@ -118,3 +120,5 @@ Clean up the whole resources
 ```shell
 kubectl delete all --all
 ```
+
+---
