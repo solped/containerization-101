@@ -89,3 +89,32 @@ Verify that there is no resource exists
 ```shell
 kubectl get all -o wide
 ```
+
+---
+
+# Volumes and Secrets
+
+```shell
+kubectl apply -f lab/kubernetes/volume_secret/database-persistent-volume-claim.yaml
+kubectl get pv
+
+kubectl apply -f lab/kubernetes/volume_secret/database-password-secret.yaml
+kubectl get secret
+kubectl describe secret/postgres-password
+
+kubectl apply -f lab/kubernetes/volume_secret/postgres-deployment.yaml
+kubectl exect -it lab/kubernetes/volume_secret/postgres-deployment.yaml - pql admin
+kubectl get all -o wide
+
+# Then we could access the postgres's database from pod
+kubectl exec -it ${POD_NAME} -- psql -U admin
+
+# execute to list all database in postgres 
+\l 
+```
+
+Clean up the whole resources
+
+```shell
+kubectl delete all --all
+```
