@@ -1,5 +1,5 @@
 # Lab Kubernetes
-![](/Users/worasit.daimongkol/Repositories/Sideline/docker-k8s-tutorial/lab/k8s_lab_overview.jpeg)
+![](./k8s_lab_overview.jpeg)
 ## Prerequsite
 
 - [Docker desktop](https://www.docker.com/products/docker-desktop/)
