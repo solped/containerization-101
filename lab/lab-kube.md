@@ -37,7 +37,7 @@
   kubectl apply -f k8s/postgres-cluster-ip-service.yaml
   ```
 
-- Create a server deployment to deploy API servers onto a cluster with 4 replicas
+- Create a server deployment to deploy API servers onto a cluster with 1 replicas
 
   ```shell
   kubectl apply -f k8s/server-deployment.yaml
@@ -49,7 +49,7 @@
   kubectl apply -f k8s/server-cluster-ip-service.yaml
   ```
 
-- Create a client deployment to deploy client website onto a cluster with 6 replicas
+- Create a client deployment to deploy client website onto a cluster with 1 replicas
 
   ```shell
   kubectl apply -f k8s/client-deployment.yaml
@@ -80,7 +80,7 @@ kubectl get all -o wide
 kubectl exec -it pod/client-deployment-687cf56d5f-lh87v -- ash
 
 # Scale Pods
-kubectl scale --current-replicas=3 --replicas=5 deployment.apps/client-deployment
+kubectl scale --current-replicas=1 --replicas=2 deployment.apps/server-deployment
 ```
 
 Useful Link:
