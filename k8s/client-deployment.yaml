@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: lab_client
+          image: lab-client
           imagePullPolicy: Never
           ports:
             - containerPort: 3000

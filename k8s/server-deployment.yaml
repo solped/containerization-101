@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: lab_server
+          image: lab-server
           imagePullPolicy: Never
           ports:
             - containerPort: 5000
