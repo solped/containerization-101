@@ -1,3 +1,6 @@
-docker run --name some-nginx -v $(pwd):/usr/share/nginx/html:ro -d -p 8080:80 nginx
+
+# in window environment use ${} instead of $()
+docker run --name some-nginx -v ${pwd}:/usr/share/nginx/html:ro -d -p 8080:80 nginx
+
 docker inspect --format="{{json .Mounts}}" some-nginx | jq 
 docker exec -it some-nginx /bin/bash

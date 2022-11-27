@@ -1,4 +1,4 @@
-FROM node:8.7.0
+FROM node:slim
 
 RUN apt-get update && apt-get install -y wget
 
