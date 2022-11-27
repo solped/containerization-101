@@ -1,6 +1,7 @@
 # docker build -t demo:cmd -f cmd.Dockerfile .
 # docker run --rm demo:cmd
 # docker run --rm demo:cmd screenfetch -E
+# as default
 
 FROM debian:stable-slim
 
