@@ -2,7 +2,7 @@
 # docker run --rm demo:cmd-entry
 # docker run --rm demo:cmd-entry Overriding arg passed in cmd
 
-FROM debian:jessie-slim
+FROM debian:stable-slim
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \

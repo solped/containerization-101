@@ -2,7 +2,7 @@
 # docker run --rm demo:entry
 # docker run demo:entry screenfetch -E
 
-FROM debian:jessie-slim
+FROM debian:stable-slim
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \

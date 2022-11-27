@@ -2,7 +2,7 @@
 # docker run --rm demo:cmd
 # docker run --rm demo:cmd screenfetch -E
 
-FROM debian:jessie-slim
+FROM debian:stable-slim
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
@@ -12,4 +12,3 @@ RUN apt-get update && \
 
 ENV PATH "$PATH:/usr/games"
 CMD ["cowsay", "Yo, CMD !!"]
-
