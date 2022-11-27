@@ -1,4 +1,5 @@
 # docker build --tag tunning --file tuning.gcc.DockerFile .
+# docker images (size resolved)
 
 FROM alpine:3.7 AS build
 RUN apk update && \

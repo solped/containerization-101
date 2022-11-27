@@ -1,4 +1,5 @@
 # docker build --tag normal --file gcc.DockerFile .
+# docker images (size issues)
 
 FROM alpine:3.7
 RUN apk update && apk add --update alpine-sdk
