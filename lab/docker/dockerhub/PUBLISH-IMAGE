@@ -1,4 +1,5 @@
-docker tag local-image:tagname new-repo:tagname
-docker push new-repo:tagname
-
-docker push howtoautomateinth/samplepublicapp:tagname
+docker login
+docker images
+docker tag samplecache:latest vtanathip/samplecache:latest
+docker images
+docker push vtanathip/samplecache:latest
