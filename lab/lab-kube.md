@@ -7,6 +7,11 @@
   ```shell
       kubectl config get-contexts
       kubectl config use-context docker-desktop
+  
+      # Exec to alphine container
+      kubectl exec -it ${POD_NAME} -- ash
+      apk update
+      apk add busybox-extras
   ```
 - Build docker images via docker-compose
   ```shell
