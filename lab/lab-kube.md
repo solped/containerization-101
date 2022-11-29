@@ -101,6 +101,7 @@ kubectl exec -it pod/client-deployment-687cf56d5f-lh87v -- ash
 # Scale Pods
 kubectl scale --current-replicas=1 --replicas=2 deployment.apps/server-deployment
 curl.exe --location --request GET 'http://localhost:5000/healthcheck'
+while(1){"`n";curl.exe --location --request GET 'http://localhost:5000/healthcheck'; sleep (1)}
 ```
 
 Useful Link:
