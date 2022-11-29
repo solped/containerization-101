@@ -22,6 +22,10 @@
       \c postgres
       \dt
       select * from "Tasks";
+
+      # Resources verification https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+      kubectl get nodes
+      kubectl describe node/docker-desktop
   ```
 - Build docker images via docker-compose
   ```shell
