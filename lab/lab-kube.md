@@ -5,6 +5,7 @@
 - [Docker desktop](https://www.docker.com/products/docker-desktop/)
 - Switch Kubernetes context to local custer
   ```shell
+      # Set current context
       kubectl config get-contexts
       kubectl config use-context docker-desktop
   
@@ -12,6 +13,15 @@
       kubectl exec -it ${POD_NAME} -- ash
       apk update
       apk add busybox-extras
+
+      # Login to PostgresDB: password(admin)
+      kubectl exec -it ${POD_NAME} -- bash
+      psql -U admin -W postgres
+      # choose DB
+      \l
+      \c postgres
+      \dt
+      select * from "Tasks";
   ```
 - Build docker images via docker-compose
   ```shell
