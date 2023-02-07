@@ -3,6 +3,7 @@
 ## Prerequsite
 
 - [Docker desktop](https://www.docker.com/products/docker-desktop/)
+- [NodeJS 16.0](https://nodejs.org/en/blog/release/v16.16.0/)
 - Switch Kubernetes context to local custer
   ```shell
       # Set current context
