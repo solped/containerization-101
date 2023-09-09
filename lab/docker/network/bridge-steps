@@ -12,7 +12,7 @@ docker start my-nginx-custom-network
 docker inspect my-nginx-custom-network  
 
 docker inspect -f '{{range .NetworkSettings.Networks}}{{json .Aliases}}{{end}}' my-nginx-custom-network
-docker network inspect network1 --format="{{json .Containers}}" | jq
+docker network inspect my-net --format="{{json .Containers}}" | jq
 
 # docker network connect for connect running container to network
 

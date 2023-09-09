@@ -12,5 +12,7 @@ RUN apt-get update && \
 
 ENV PATH "$PATH:/usr/games"
 
+# default value if nothing passed
 CMD ["Yo, CMD!!"]
+
 ENTRYPOINT ["cowsay", "Yo, Entrypoint!!"]

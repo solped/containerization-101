@@ -1,6 +1,7 @@
 # docker build -t demo:entry -f entrypoint.Dockerfile .
 # docker run --rm demo:entry
 # docker run demo:entry screenfetch -E
+# as parameter
 
 FROM debian:stable-slim
 
