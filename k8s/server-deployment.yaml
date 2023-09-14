@@ -21,10 +21,10 @@ spec:
           imagePullPolicy: Never
           resources:
             requests:
-              cpu: "250m"
+              cpu: "1"
               memory: "250Mi"
             limits:
-              cpu: "350m"
+              cpu: "6"
               memory: "500Mi"
           ports:
             - containerPort: 5000
