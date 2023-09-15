@@ -99,6 +99,9 @@ kubectl get all -o wide
 # Execute into pod
 kubectl exec -it pod/client-deployment-687cf56d5f-lh87v -- ash
 
+# Describe pod's events
+kubectl describe pod/client-deployment-687cf56d5f-lh87v
+
 # Scale Pods
 kubectl scale --current-replicas=1 --replicas=2 deployment.apps/server-deployment
 curl.exe --location --request GET 'http://localhost:5000/healthcheck'
